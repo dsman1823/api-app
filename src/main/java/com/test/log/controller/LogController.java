@@ -1,5 +1,6 @@
 package com.test.log.controller;
 
+import com.test.log.aspect.AppAction;
 import com.test.log.dto.Pageable;
 import com.test.log.model.Log;
 import com.test.log.service.LogService;
@@ -22,11 +23,13 @@ public class LogController {
     @Autowired
     private LogService service;
 
+    @AppAction
     @PostMapping("/api/log")
     public Log createLog(@RequestBody Log log) {
         return service.save(log);
     }
 
+    @AppAction
     @GetMapping("/api/log/{appId}")
     public List<Log> getLogs(@PathVariable Long appId,
                              Pageable pageable,
