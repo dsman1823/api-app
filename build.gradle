@@ -38,6 +38,6 @@ dependencies {
 }
 
 gretty {
-    debugPort = 5005      
-    debugSuspend = true   
+    debugPort = 5005     
+    debugSuspend = true
 }
