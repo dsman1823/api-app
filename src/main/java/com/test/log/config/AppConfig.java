@@ -1,6 +1,7 @@
 package com.test.log.config;
 
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.logging.Log;
 import org.hibernate.SessionFactory;
@@ -52,5 +53,13 @@ public class AppConfig {
         basicDataSource.setUrl(dbUrl);
         basicDataSource.setPassword(dbPassword);
         return basicDataSource;
+    }
+
+    @Bean
+    public SpringLiquibase liquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("classpath:liquibase/changelog.xml");
+        liquibase.setDataSource(dataSource());
+        return liquibase;
     }
 }
