@@ -32,7 +32,7 @@ public class AppConfig {
     public SessionFactory sessionFactory(DataSource dataSource) {
         org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration();
         Properties settings = new Properties();
-        settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+        settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         settings.put(Environment.DATASOURCE, dataSource);
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "org.hibernate.context.internal.ThreadLocalSessionContext");
 
@@ -48,7 +48,7 @@ public class AppConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        basicDataSource.setDriverClassName("org.postgresql.Driver");
         basicDataSource.setUsername(dbName);
         basicDataSource.setUrl(dbUrl);
         basicDataSource.setPassword(dbPassword);
